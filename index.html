@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Life Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Daily Life Planner</h1>
+        <p>Organize your day for a better life</p>
+    </header>
+
+    <main>
+        <section id="morning">
+            <h2>Morning Routine</h2>
+            <ul id="morning-list"></ul>
+            <input type="text" id="morning-input" placeholder="Add a morning task">
+            <button onclick="addTask('morning')">Add Task</button>
+        </section>
+
+        <section id="afternoon">
+            <h2>Afternoon Activities</h2>
+            <ul id="afternoon-list"></ul>
+            <input type="text" id="afternoon-input" placeholder="Add an afternoon task">
+            <button onclick="addTask('afternoon')">Add Task</button>
+        </section>
+
+        <section id="evening">
+            <h2>Evening Wind Down</h2>
+            <ul id="evening-list"></ul>
+            <input type="text" id="evening-input" placeholder="Add an evening task">
+            <button onclick="addTask('evening')">Add Task</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Stay organized and enjoy your daily life!</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
