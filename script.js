@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', loadTasks);
 
 function addTask(timeOfDay) {
-    const input = document.getElementById({timeOfDay}-input);
+    const input = document.getElementById('${timeOfDay}-input');
     const taskText = input.value.trim();
     
     if (taskText === '') {
@@ -10,7 +10,7 @@ function addTask(timeOfDay) {
         return;
     }
     
-    const list = document.getElementById({timeOfDay}-list);
+    const list = document.getElementById('${timeOfDay}-list');
     const li = document.createElement('li');
     li.innerHTML = `
         <span>${taskText}</span>
@@ -51,7 +51,7 @@ function removeTask(timeOfDay, taskText) {
 function loadTasks() {
     ['morning', 'afternoon', 'evening'].forEach(timeOfDay => {
         const tasks = JSON.parse(localStorage.getItem(timeOfDay)) || [];
-        const list = document.getElementById({timeOfDay}-list);
+        const list = document.getElementById('${timeOfDay}-list');
         
         tasks.forEach(taskText => {
             const li = document.createElement('li');
