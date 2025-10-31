@@ -88,3 +88,52 @@ footer {
     background-color: #333;
     color: white;
 }
+/* 🌈 Notifikasi Berwarna dan Animasi */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    color: white;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    font-weight: bold;
+    z-index: 1000;
+    font-size: 1rem;
+}
+
+/* Warna berdasarkan waktu ✨ */
+.notification.morning {
+    background-color: #FFD54F; /* kuning pagi */
+    color: #333;
+}
+
+.notification.afternoon {
+    background-color: #FFB74D; /* oranye sore */
+    color: #fff;
+}
+
+.notification.evening {
+    background-color: #64B5F6; /* biru malam */
+    color: #fff;
+}
+
+/* Efek muncul */
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Sedikit animasi bergetar lembut pas muncul */
+.notification.show {
+    animation: bounceIn 0.4s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: translateX(-50%) translateY(20px) scale(0.9); opacity: 0; }
+    60% { transform: translateX(-50%) translateY(-5px) scale(1.05); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
