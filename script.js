@@ -2,26 +2,30 @@
 document.addEventListener('DOMContentLoaded', loadTasks);
 
 function addTask(timeOfDay) {
-    const input = document.getElementById('${timeOfDay}-input');
+    const input = document.getElementById(`${timeOfDay}-input`);
     const taskText = input.value.trim();
-    
+
     if (taskText === '') {
         alert('Please enter a task!');
         return;
     }
-    
-    const list = document.getElementById('${timeOfDay}-list');
+
+    const list = document.getElementById(`${timeOfDay}-list`);
     const li = document.createElement('li');
     li.innerHTML = `
         <span>${taskText}</span>
         <button class="delete-btn" onclick="deleteTask(this)">Delete</button>
     `;
     list.appendChild(li);
-    
+
     // Save to localStorage
     saveTask(timeOfDay, taskText);
-    
+
+    // Clear input
     input.value = '';
+
+    // Show color-based notification ✨
+    showNotification(timeOfDay, "Yey, kegiatan anda berhasil ditambahkan!");
 }
 
 function deleteTask(button) {
@@ -29,10 +33,8 @@ function deleteTask(button) {
     const list = li.parentElement;
     const timeOfDay = list.id.replace('-list', '');
     const taskText = li.querySelector('span').textContent;
-    
+
     li.remove();
-    
-    // Remove from localStorage
     removeTask(timeOfDay, taskText);
 }
 
@@ -51,7 +53,7 @@ function removeTask(timeOfDay, taskText) {
 function loadTasks() {
     ['morning', 'afternoon', 'evening'].forEach(timeOfDay => {
         const tasks = JSON.parse(localStorage.getItem(timeOfDay)) || [];
-        const list = document.getElementById('${timeOfDay}-list');
+        const list = document.getElementById(`${timeOfDay}-list`);
         
         tasks.forEach(taskText => {
             const li = document.createElement('li');
@@ -62,4 +64,23 @@ function loadTasks() {
             list.appendChild(li);
         });
     });
+}
+
+// Fungsi notifikasi berwarna sesuai waktu
+function showNotification(timeOfDay, message) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${timeOfDay}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    // Muncul pelan
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+
+    // Hilang setelah 2,5 detik
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 2500);
 }
