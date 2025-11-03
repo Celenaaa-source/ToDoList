@@ -9,7 +9,23 @@
 <body>
     <header>
         <h1>My Daily Life Planner</h1>
-        <p>Organize your day for a better life</p>
+        <p>Organize your day for a better life
+<div class="menu-container">
+    <button class="menu-btn"
+        onclick="toggleMenu()">☰</button>
+    <div class="menu-panel" id="menuPanel">
+        <div id="login-section"
+            <h3>Login</h3>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+    </div>
+    <div id="logout-section"style="display:none;">
+        <p id="welcome-msg"></p>
+        <button onclick="logout()">Logout</button>
+        </div>
+</div>
+</p>
     </header>
 
     <main>
